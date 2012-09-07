@@ -10,6 +10,7 @@ var minSalePrice = 55;
 var offer = 55;
 var buyMethod = "online";
 var number;
+var buyerName = "Ricky";
 var counter = 0;
 
 function intro(name,gender) {
@@ -18,16 +19,16 @@ function intro(name,gender) {
 	} else {
 		var greetGen = "Ms.";
 	}
-	var greeting = "Hello " + greetGen + " " + name + "! *Hand Shake* ";
+	var greeting = "He said, \"Hello " + greetGen + " " + name + "!\" *Hand Shake* ";
 	return greeting;
 };
 
 function checkOffer(name, amount) {
 	if (amount < minSalePrice){
-		console.log("Sorry " + name + " your offer is too low. ");
+		console.log("He said, \"Sorry " + name + " your offer is too low.\" ");
 		return false;
 	} else {
-		console.log("Great offer " + name + ", lets do business!");
+		console.log("He said, \"Great offer " + name + ", lets do business!\"");
 		return true;
 	}
 };
@@ -66,9 +67,10 @@ function numChips(moneyLeft) {
 
 console.log(myName + " is trying to buy " + gameName + " for his Xbox 360. He also want to buy a least 2 bags of chips, which cost $" + chipsCost + " a bag."); 
 console.log("He must first sale his Casio Keyboard on Craigslist for $"  + salePrice + " and will take no less than $" + minSalePrice + " for it." );
-console.log("He meets with the first buyer.");
-console.log(intro("Ricky", "m"));
-var goodOffer = checkOffer("Ricky", offer);
+console.log("He meet with the first buyer.");
+console.log(intro(buyerName, "m"));
+console.log(buyerName + " offered $" + offer +".");
+var goodOffer = checkOffer(buyerName, offer);
 if (goodOffer === true){
 	console.log(myName + " sales the keyboard and must now figure out where he will by the game. Either buying it online and having to wait to play due to shipping or locally and play immediately.");
 	var remain = remainder(cost, 2);
@@ -80,6 +82,8 @@ if (goodOffer === true){
 		number = 1;
 	}
 	numChips(remain[number]);
+	console.log("He heads home to eat chips and enjoy his new game.");
 } else {
 	console.log(myName + " wasn't able to sale his keyboard and can't buy the game at this time.");
 }
+console.log("The End!");
