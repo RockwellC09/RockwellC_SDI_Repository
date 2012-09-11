@@ -20,7 +20,7 @@ var counter = 0;
 var buyers = {
 	name: ["Ricky", "Susie", "Blake"],
 	gender: ["M", "F", "M"],
-	offer: [45, 55, 50],
+	offer: [45, 55, 60],
 	miles:[6, 10, 5]
 
 };
@@ -35,14 +35,29 @@ function intro(name,gender) {
 	return greeting;
 };
 
-function checkOffer(name, amount) {
-	if (amount < minSalePrice){
-		console.log("He said, \"Sorry " + name + " your offer is too low.\" ");
-		return false;
-	} else {
-		console.log("He said, \"Great offer " + name + ", lets do business!\"");
-		return true;
+function offers(buyersInfo) {
+	var count = 0;
+	var goodOffer = [];
+	for (var i = 0; i < buyersInfo.name.length; i++) {
+		console.log(buyersInfo.name[i] + " offered $" + buyersInfo.offer[i] + " and Chris would have to drive " + buyersInfo.miles[i] + " miles.");
 	}
+	for (var i = 0; i < buyersInfo.name.length; i++) {
+		if (buyersInfo.offer[i] < minSalePrice){
+			console.log(buyersInfo.name[i] + "'s offer is too low. ");
+		} else {
+			console.log(buyersInfo.name[i] + " has a solid offer. ");
+			goodOffer[count] = i;
+			count++; 
+		}
+	}
+	return goodOffer;
+};
+
+function coinToss(buyersInfo, gdOffers) {
+	console.log("Chris has to choose between " + buyersInfo.name[gdOffers[0]] + " and " + buyersInfo.name[gdOffers[1]] + " to sell the keyboard to. ");
+	console.log("*Coin Tossed*");
+	landedOn = Math.floor((Math.random()*2)+1);
+    if 
 };
 
 function remainder(array, numberOptions) {
@@ -79,11 +94,14 @@ function numChips(moneyLeft) {
 
 console.log(myName + " is trying to buy " + gameName + " for his Xbox 360. He also want to buy a least 2 bags of chips, which cost $" + chipsCost + " a bag."); 
 console.log("He must first sale his Casio Keyboard on Craigslist for $"  + salePrice + " and will take no less than $" + minSalePrice + " for it." );
-console.log("He meet with the first buyer.");
-console.log(intro(buyerName, "M"));
-console.log(buyerName + " offered $" + offer +".");
-var goodOffer = checkOffer(buyerName, offer);
-if (goodOffer === true){
+console.log("He got 3 offers all at once! ");
+console.log("While choosing his offer his must keep in mind the distant he has to drive to make the sale because of the high cost of gas.");
+//console.log(intro(buyerName, "M"));
+//console.log(buyerName + " offered $" + offer +".");
+var goodOffers = offers(buyers);
+console.log("Chris couldn't make up his mind so he chose to flip a coin to determine his buyer. ");
+coinToss(buyers, goodOffers);
+if (goodOffers.length > 0){
 	console.log(myName + " sales the keyboard and must now figure out where he will by the game. Either buying it online and having to wait to play due to shipping or locally and play immediately.");
 	var remain = remainder(cost, 2);
 	remainder(cost, 2);
