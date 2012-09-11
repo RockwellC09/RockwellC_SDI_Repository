@@ -21,7 +21,7 @@ var buyers = {
 	name: ["Ricky", "Susie", "Blake"],
 	gender: ["M", "F", "M"],
 	offer: [45, 55, 50],
-	miles:[7, 10, 5]
+	miles:[6, 10, 5]
 
 };
 
