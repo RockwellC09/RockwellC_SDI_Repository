@@ -6,32 +6,19 @@ Deliverable 3
 //alert("JavaScript works!");
 var myName = "Chris";
 var cost = [["Amazon",40] , ["GameStop", 45]];
-var accept;
 var gameName = "Ghost Recon Future Soldier";
 var salePrice = 60;
 var chipsCost = 5;
 var minSalePrice = 55;
 var offer = 55;
 var number;
-var buyerName = "Ricky";
 var counter = 0;
-
 var buyers = {
 	name: ["Ricky", "Susie", "Blake"],
 	gender: ["M", "F", "M"],
 	offer: [45, 55, 60],
 	miles:[6, 10, 5]
 
-};
-
-function intro(name,gender) {
-	if (gender === "m" || gender === "M" ){
-		var greetGen = "Mr.";
-	} else {
-		var greetGen = "Ms.";
-	}
-	var greeting = "He said, \"Hello " + greetGen + " " + name + "!\" *Hand Shake* ";
-	return greeting;
 };
 
 function offers(buyersInfo) {
