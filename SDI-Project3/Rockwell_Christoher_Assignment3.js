@@ -12,7 +12,6 @@ var salePrice = 60;
 var chipsCost = 5;
 var minSalePrice = 55;
 var offer = 55;
-var buyMethod = "online";
 var number;
 var buyerName = "Ricky";
 var counter = 0;
@@ -55,16 +54,27 @@ function offers(buyersInfo) {
 
 function coinToss(buyersInfo, gdOffers) {
 	console.log("Chris has to choose between " + buyersInfo.name[gdOffers[0]] + " and " + buyersInfo.name[gdOffers[1]] + " to sell the keyboard to. ");
+	console.log("Heads for " + buyersInfo.name[gdOffers[0]] + " and Tails for " + buyersInfo.name[gdOffers[1]]);
 	console.log("*Coin Tossed*");
 	landedOn = Math.floor((Math.random()*2)+1);
-    if 
+    if (landedOn == 1) {
+		console.log("\"Heads!\" So the buyer is " + buyersInfo.name[gdOffers[0]] + ".");
+		console.log(myName + " sales the keyboard to " + buyersInfo.name[gdOffers[0]] + " and must now figure out where he will by the game. Either buying it online and having to wait to play due to shipping or locally and play immediately.");
+		var offer = buyersInfo.offer[gdOffers[0]];
+    	return offer;
+    } else {
+    	console.log("\"Tails!\" So the buyer is " + buyersInfo.name[gdOffers[1]] + ".");
+    	console.log(myName + " sales the keyboard to " + buyersInfo.name[gdOffers[1]] + " and must now figure out where he will by the game. Either buying it online and having to wait to play due to shipping or locally and play immediately.");
+    	var offer = buyersInfo.offer[gdOffers[1]];
+    	return offer;
+    }
 };
 
 function remainder(array, numberOptions) {
 	var leftOver;
 	var left = [];
 	for (i = 0; i < numberOptions; i++) {
-		leftOver = offer - array[i][1];
+		leftOver = soldFor - array[i][1];
 		left[i] = (leftOver);
 		counter++;
 		if (counter <= numberOptions) {
@@ -74,13 +84,23 @@ function remainder(array, numberOptions) {
 	return left;
 };
 
-function buyingPrecedure(method) {
-	if (method === "online") {
+function buyMethod(number) {
+	if (number == 1) {
+	return true;
+	} else {
+	return false;
+	}
+};
+
+function buyingPrecedure(online) {
+	if (online === true) {
 		console.log(myName + " decided to purchase the game online from Amazon which saves him money but prolongs his gameplay due to shipping.");
 	} else {
 		console.log(myName + " decided to purchase the game locally from GameStop which cost more but enables him to start playing immediately.")
 	}
 };
+
+
 
 function numChips(moneyLeft) {
 	var chips = 0;
@@ -96,17 +116,16 @@ console.log(myName + " is trying to buy " + gameName + " for his Xbox 360. He al
 console.log("He must first sale his Casio Keyboard on Craigslist for $"  + salePrice + " and will take no less than $" + minSalePrice + " for it." );
 console.log("He got 3 offers all at once! ");
 console.log("While choosing his offer his must keep in mind the distant he has to drive to make the sale because of the high cost of gas.");
-//console.log(intro(buyerName, "M"));
-//console.log(buyerName + " offered $" + offer +".");
 var goodOffers = offers(buyers);
 console.log("Chris couldn't make up his mind so he chose to flip a coin to determine his buyer. ");
-coinToss(buyers, goodOffers);
+var soldFor = coinToss(buyers, goodOffers);
 if (goodOffers.length > 0){
-	console.log(myName + " sales the keyboard and must now figure out where he will by the game. Either buying it online and having to wait to play due to shipping or locally and play immediately.");
 	var remain = remainder(cost, 2);
 	remainder(cost, 2);
-	buyingPrecedure(buyMethod);
-	if (buyMethod === "online") {
+	var randNumber = Math.floor((Math.random()*2)+1);
+	buyOnline = buyMethod(randNumber);
+	buyingPrecedure(buyOnline);
+	if (buyOnline === true) {
 		number = 0;
 	} else {
 		number = 1;
