@@ -14,17 +14,29 @@ var minSalePrice = 55;
 var buyMethod = "online";
 var number;
 var counter = 0;
+
+//JSON data
+var chipFlav = {
+	flav1: "Nacho Cheese",
+	flav2: "Enchilada",
+	flav3: "Cool Ranch"
+};
+
+//buyer object
 var buyer = {
 	name: "Ricky",
 	gender: "M",
+	add: 0,
 	offer: 45,
 	kid: {
 		name: "Emily"},
 	dogNames: ["Oreo", "Dog"],
 	flexible: true,
+	//method accessor that returns the name for use outside the object
 	getName: function(){
 		return this.name;
 	},
+	//how Chris greets the buyer Mr. for a male or Ms. for a female
 	intro: function(name){
 		if (this.gender === "m" || this.gender === "M"){
 			var greetGen = "Mr.";
@@ -34,6 +46,7 @@ var buyer = {
 		var greeting = "He said, \"Hello " + greetGen + " " + name + "!\" *Hand Shake* ";
 		return greeting;
 	},
+	//check to see if the offer meets what Chris is asking for and outputting Chris's response to the offer
 	offered: function(name, amount){
 		if (this.offer < minSalePrice) {
 			var diff = minSalePrice - amount;
@@ -44,20 +57,21 @@ var buyer = {
 			return true;
 		}	
 	},
+	//outputting the names of the buyers daughter and 2 dogs
 	outputNames: function(){
 		var names = this.kid.name + " and my 2 dogs " + this.dogNames[0] + " and " + this.dogNames[1] + ".\""; 
 		return names;
 	},
-	added: function(amount){
+	//calculating how much the buyer is willing to add to his initial offer
+	added: function(){
 		if (this.flexable === true){
-			var add = Math.floor((Math.random()*10)+8);
+			this.add = Math.floor((Math.random()*10)+8);
 		} else {
-			var add = Math.floor((Math.random()*7)+5);
+			this.add = Math.floor((Math.random()*7)+5);
 		}
-		return amount + add;
 	}
 };
-
+//getting the remaining amount after Chris purchases the game
 function remainder(array, numberOptions) {
 	var leftOver;
 	var left = [];
@@ -71,7 +85,7 @@ function remainder(array, numberOptions) {
 	}
 	return left;
 };
-
+//Chris's method of paying and the output that goes with that method
 function buyingPrecedure(method) {
 	if (method === "online") {
 		console.log(myName + " decided to purchase the game online from Amazon which saves him money but prolongs his gameplay due to shipping.");
@@ -79,7 +93,7 @@ function buyingPrecedure(method) {
 		console.log(myName + " decided to purchase the game locally from GameStop which cost more but enables him to start playing immediately.")
 	}
 };
-
+//calculating the number of bags of chips Chris can buy with his remaining funds
 function numChips(moneyLeft) {
 	var chips = 0;
 	while (moneyLeft > 4) {
@@ -91,6 +105,7 @@ function numChips(moneyLeft) {
 };
 
 var offer = buyer.offer;
+//into to the store and the plot
 console.log(myName + " is trying to buy " + gameName + " for his Xbox 360. He also want to buy a least 2 bags of chips, which cost $" + chipsCost + " a bag."); 
 console.log("He must first sale his Casio Keyboard on Craigslist for $"  + salePrice + " and will take no less than $" + minSalePrice + " for it." );
 console.log("Chris got an offer from many offers but decided to meet with a buyer trying to purchase the keyboard for his daughter");
@@ -107,7 +122,8 @@ if (goodOffer === true){
 	console.log(myName + " sales the keyboard and must now figure out where he will by the game. Either buying it online and having to wait to play due to shipping or locally and play immediately.");
 } else {
 	console.log("Chris asked the buyer for between $5 and $10 more and they have a deal ");
-	var newOffer = buyer.added(offer);
+	buyer.added(offer);
+	var newOffer = buyer.add + offer;
 	var dif = newOffer - offer;
 	var offer = newOffer;
 	console.log(buyerName + " added $" + dif + " to his offer which make his offer $" + newOffer + ". "); 
@@ -122,5 +138,14 @@ var remain = remainder(cost, 2);
 		number = 1;
 	}
 	numChips(remain[number]);
-	console.log("He heads home to eat chips and enjoy his new game.");
+	//random number that determines the chip flavor
+	chipRand = Math.floor((Math.random()* 3)+1);
+	if (chipRand == 1) {
+		var chipFlavor = chipFlav.flav1;
+	} else if (chipRand == 2) {
+		var chipFlavor = chipFlav.flav2;
+	} else {
+		var chipFlavor = chipFlav.flav3;
+	}
+	console.log("He heads home to eat his " + chipFlavor + " Doritos and enjoy his new game.");
 console.log("The End!");
