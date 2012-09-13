@@ -165,4 +165,5 @@ var remain = remainder(cost, 2);
 	}
 	numChips(remain[number]);
 	var flavs = chipObj(chipFlav);
+	console.log(myName + "'s favorite chips are " + flavs.flav1 + ", " + flavs.flav2 + ", and " + flavs.flav3 + " flavored Doritos.");
 console.log("The End!");
