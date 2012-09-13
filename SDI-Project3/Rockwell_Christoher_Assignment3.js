@@ -13,6 +13,8 @@ var chipsCost = 5;
 var minSalePrice = 55;
 var buyMethod = "online";
 var number;
+var age = 21;
+var married = true;
 var counter = 0;
 
 //JSON data
@@ -39,12 +41,21 @@ var buyer = {
 	//how Chris greets the buyer Mr. for a male or Ms. for a female
 	intro: function(name){
 		if (this.gender === "m" || this.gender === "M"){
-			var greetGen = "Mr.";
+			if (age >= 21) {
+				var greetGen = " Mr.";
+			} else { 
+				var greetGen = " ";
+			}
 		} else {
-			var greetGen = "Ms.";
+			if (this.gender === "f" || this.gender === "F") {
+				if (married === true){
+					var greetGen = " Mrs.";
+				} else {
+					var greetGen = " Ms.";
+				}
+			} else {var greetGen = " alien";}
 		}
-		var greeting = "He said, \"Hello " + greetGen + " " + name + "!\" *Hand Shake* ";
-		return greeting;
+		console.log("He said, \"Hello" + greetGen + name + "!\" *Hand Shake* ");
 	},
 	//check to see if the offer meets what Chris is asking for and outputting Chris's response to the offer
 	offered: function(name, amount){
@@ -86,7 +97,7 @@ function remainder(array, numberOptions) {
 	return left;
 };
 //Chris's method of paying and the output that goes with that method
-function buyingPrecedure(method) {
+function buyingProcedure(method) {
 	if (method === "online") {
 		console.log(myName + " decided to purchase the game online from Amazon which saves him money but prolongs his gameplay due to shipping.");
 	} else {
@@ -111,7 +122,7 @@ console.log("He must first sale his Casio Keyboard on Craigslist for $"  + saleP
 console.log("Chris got an offer from many offers but decided to meet with a buyer trying to purchase the keyboard for his daughter");
 console.log("He goes into this transaction planing to take whatever the buyer offers because of him buying it for his daughter");
 var buyerName = buyer.getName();
-console.log(buyer.intro(buyerName));
+buyer.intro(buyerName);
 console.log(buyerName + " showed up with his daughter and 2 dogs.");
 var names = buyer.outputNames();
 console.log(myName + " asked, \"What's your daughter and 2 dogs name?\"");
@@ -131,7 +142,7 @@ if (goodOffer === true){
 
 var remain = remainder(cost, 2);
 	remainder(cost, 2);
-	buyingPrecedure(buyMethod);
+	buyingProcedure(buyMethod);
 	if (buyMethod === "online") {
 		number = 0;
 	} else {
