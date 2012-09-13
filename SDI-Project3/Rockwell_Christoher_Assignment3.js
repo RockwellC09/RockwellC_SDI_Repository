@@ -115,6 +115,21 @@ function numChips(moneyLeft) {
 	return chips;
 };
 
+//determine chip flavor
+function chipObj(flavors){
+	//random number that determines the chip flavor
+	chipRand = Math.floor((Math.random()* 3)+1);
+	if (chipRand == 1) {
+		var chipFlavor = flavors.flav1;
+	} else if (chipRand == 2) {
+		var chipFlavor = flavors.flav2;
+	} else {
+		var chipFlavor = flavors.flav3;
+	}
+	console.log("He heads home to eat his " + chipFlavor + " Doritos and enjoy his new game.");
+	return flavors;
+};
+
 var offer = buyer.offer;
 //into to the store and the plot
 console.log(myName + " is trying to buy " + gameName + " for his Xbox 360. He also want to buy a least 2 bags of chips, which cost $" + chipsCost + " a bag."); 
@@ -149,14 +164,5 @@ var remain = remainder(cost, 2);
 		number = 1;
 	}
 	numChips(remain[number]);
-	//random number that determines the chip flavor
-	chipRand = Math.floor((Math.random()* 3)+1);
-	if (chipRand == 1) {
-		var chipFlavor = chipFlav.flav1;
-	} else if (chipRand == 2) {
-		var chipFlavor = chipFlav.flav2;
-	} else {
-		var chipFlavor = chipFlav.flav3;
-	}
-	console.log("He heads home to eat his " + chipFlavor + " Doritos and enjoy his new game.");
+	var flavs = chipObj(chipFlav);
 console.log("The End!");
