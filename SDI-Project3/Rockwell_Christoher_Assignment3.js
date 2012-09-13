@@ -118,7 +118,7 @@ function numChips(moneyLeft) {
 //determine chip flavor
 function chipObj(flavors){
 	//random number that determines the chip flavor
-	chipRand = Math.floor((Math.random()* 3)+1);
+	var chipRand = Math.floor((Math.random()* 3)+1);
 	if (chipRand == 1) {
 		var chipFlavor = flavors.flav1;
 	} else if (chipRand == 2) {
