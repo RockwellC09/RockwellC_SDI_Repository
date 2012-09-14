@@ -70,7 +70,7 @@ var buyer = {
 	},
 	//outputting the names of the buyers daughter and 2 dogs
 	outputNames: function(){
-		var names = this.kid.name + " and my 2 dogs " + this.dogNames[0] + " and " + this.dogNames[1] + ".\""; 
+		var names = this.kid.name + " and my 2 dogs, " + this.dogNames[0] + " and " + this.dogNames[1] + ".\""; 
 		return names;
 	},
 	//calculating how much the buyer is willing to add to his initial offer
@@ -134,8 +134,8 @@ var offer = buyer.offer;
 //into to the store and the plot
 console.log(myName + " is trying to buy " + gameName + " for his Xbox 360. He also want to buy a least 2 bags of chips, which cost $" + chipsCost + " a bag."); 
 console.log("He must first sale his Casio Keyboard on Craigslist for $"  + salePrice + " and will take no less than $" + minSalePrice + " for it." );
-console.log("Chris got an offer from many offers but decided to meet with a buyer trying to purchase the keyboard for his daughter");
-console.log("He goes into this transaction planing to take whatever the buyer offers because of him buying it for his daughter");
+console.log("Chris got an offer from many offers but decided to meet with a buyer trying to purchase the keyboard for his daughter.");
+console.log("He goes into this transaction planning to take whatever the buyer offers because of him buying it for his daughter.");
 var buyerName = buyer.getName();
 buyer.intro(buyerName);
 console.log(buyerName + " showed up with his daughter and 2 dogs.");
