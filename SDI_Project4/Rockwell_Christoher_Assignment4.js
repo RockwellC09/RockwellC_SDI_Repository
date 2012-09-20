@@ -61,7 +61,8 @@ var myLib = function() {
 		var str = data.split(" ");
 		var rest = str[0].substring(1, str[0].length);
 		var rest2 = str[1].substring(1, str[1].length);
-		return str[0].charAt(0).toUpperCase() + rest.toLowerCase() + " " + str[1].charAt(0).toUpperCase() + rest2.toLowerCase()
+		var fin = str[0].charAt(0).toUpperCase() + rest.toLowerCase() + " " + str[1].charAt(0).toUpperCase() + rest2.toLowerCase()
+		return fin;
 	};
 	//change string separator function
 	var changeSep = function(data, separator) {
