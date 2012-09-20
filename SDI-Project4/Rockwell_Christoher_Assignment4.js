@@ -6,17 +6,18 @@
 var myLib = function() {
 
 	//phone number validation function
-	var isPhoneNumber = function(numb) {
-		var ch1 = numb.charAt(3);
-		var ch2 = numb.charAt(7);
+	var isPhoneNumber = function(data) {
+		var ch1 = data.charAt(3);
+		var ch2 = data.charAt(7);
 		
-		if (ch1 === "-" && ch2 === "-" && numb.length == 12){
+		if (ch1 === "-" && ch2 === "-" && data.length == 12){
 			return true;
 		} else {
 			return false;
 		}
 	};
 	
+	//email validation function
 	var isEmail = function(data) {
 		var len = data.length;
 		var first = 0;
@@ -42,6 +43,7 @@ var myLib = function() {
 	
 	};
 	
+	//url validation function
 	var isURL = function(data) {
 		var check1 = data.substring(0, data.indexOf(":"));
 		var check2 = data.substring(data.indexOf(":") + 1, data.indexOf(":") + 2);
@@ -53,20 +55,26 @@ var myLib = function() {
 			return false;
 		}
 	};
-
+	
+	//Title-case function
 	var upperCase = function(data) {
-		//var space = data.indexOf(" ") + 1;
 		var str = data.split(" ");
 		var rest = str[0].substring(1, str[0].length);
 		var rest2 = str[1].substring(1, str[1].length);
 		return str[0].charAt(0).toUpperCase() + rest.toLowerCase() + " " + str[1].charAt(0).toUpperCase() + rest2.toLowerCase()
 	};
-	
+	//change string separator function
 	var changeSep = function(data, separator) {
 		var sep = data.split(" ");
 		var toStr = sep.toString();
 		var str = toStr.replace(/,/g, separator);
 		return str;
+	};
+	//turn string version number into number function
+	var stringNumber = function(data) {
+		var num = Number(data);
+		return num;
+		
 	};
 
 	return {
@@ -74,7 +82,8 @@ var myLib = function() {
 		"isEmail": isEmail,
 		"isURL" : isURL,
 		"upperCase" : upperCase,
-		"changeSep": changeSep 
+		"changeSep": changeSep,
+		"stringNumber": stringNumber 
 		
 	};
 
@@ -87,4 +96,5 @@ console.log(newLib.isEmail("Rock@gmail.com"));
 console.log(newLib.isURL("http://Rockwell.com"));
 console.log(newLib.upperCase("chrisTOpher rOCKWell"));
 console.log(newLib.changeSep("a b c", "^"));
+console.log(newLib.stringNumber("40"));
 
